@@ -1,0 +1,24 @@
+-- 1. Create database
+CREATE DATABASE IF NOT EXISTS price_expiry_db;
+USE price_expiry_db;
+
+-- 2. Create items table
+CREATE TABLE IF NOT EXISTS items (
+  id VARCHAR(36) PRIMARY KEY,
+  itemName VARCHAR(255),
+  department VARCHAR(255),
+  totalCost DECIMAL(12,2),
+  quantity INT,
+  profitPercent DECIMAL(5,2),
+  expirationDate DATE,
+  alertPrice DECIMAL(12,2),
+  unitCost DECIMAL(12,2),
+  sellingPrice DECIMAL(12,2),
+  email VARCHAR(255)
+);
+
+-- 3. Optional: Insert sample records
+INSERT INTO items (id, itemName, department, totalCost, quantity, profitPercent, expirationDate, alertPrice, unitCost, sellingPrice, email)
+VALUES 
+  ('item-uuid-1', 'Toothpaste', 'Health', 3000.00, 10, 25.00, CURDATE() + INTERVAL 4 DAY, 350.00, 300.00, 380.00, 'test1@example.com'),
+  ('item-uuid-2', 'Rice', 'Grocery', 25000.00, 50, 10.00, CURDATE() + INTERVAL 12 DAY, 550.00, 500.00, 550.00, 'test2@example.com');
